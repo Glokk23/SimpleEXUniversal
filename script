@@ -1,0 +1,155 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "SimpleExploiter Universal", HidePremium = false, IntroEnabled = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+
+OrionLib:MakeNotification({
+	Name = "Script Loaded Sucessfully!",
+	Content = "Have Fun!",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
+
+
+getgenv().cham = false
+getgenv().nameESP = false
+getgenv().boxESP = false
+getgenv().esp_loaded = false
+getgenv().Visibility = false
+
+
+local Tab2 = Window:MakeTab({
+	Name = "Player",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Tab3 = Window:MakeTab({
+        Name = "Visuals",
+        Icon = "rbxassetid://4483345998",
+        PremiumOnly = false
+})
+
+
+Tab2:AddSlider({
+	Name = "Speed",
+	Min = 0,
+	Max = 500,
+	Default = game.Players.LocalPlayer.Character.Humanoid.WalkSpeed,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "Speed",
+	Callback = function(Value)
+		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+	end    
+})
+Tab2:AddSlider({
+	Name = "Jump Power",
+	Min = 0,
+	Max = 500,
+	Default = game.Players.LocalPlayer.Character.Humanoid.JumpPower,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "Jump Power",
+	Callback = function(Value)
+		game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
+	end    
+})
+
+Tab2:AddToggle({
+	Name = "Sit",
+	Default = game.Players.LocalPlayer.Character.Humanoid.Sit,
+	Callback = function(Value)
+		game.Players.LocalPlayer.Character.Humanoid.Sit = Value
+	end    
+})
+
+Tab3:AddToggle({
+    Name = "Visual",
+    Default = getgenv().Visibility,
+    Callback = function(Value)
+        if getgenv().esp_loaded == false and Value == true then
+            getgenv().esp_loaded = true
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/skatbr/Roblox-Releases/main/A_simple_esp.lua", true))()
+        end
+        getgenv().Visibility = Value
+    end   
+})
+
+Tab3:AddToggle({
+    Name = "Box ESP",
+    Default = getgenv().Visibility,
+    Callback = function(Value)
+        if getgenv().esp_loaded == false and Value == true then
+            getgenv().esp_loaded = true
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/skatbr/Roblox-Releases/main/A_simple_esp.lua", true))()
+        end
+        getgenv().boxESP = Value
+    end   
+})
+
+
+Tab3:AddToggle({
+    Name = "Name",
+    Default = getgenv().Visibility,
+    Callback = function(Value)
+        if getgenv().esp_loaded == false and Value == true then
+            getgenv().esp_loaded = true
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/skatbr/Roblox-Releases/main/A_simple_esp.lua", true))()
+        end
+        getgenv().nameESP = Value
+    end   
+})
+
+
+Tab3:AddToggle({
+    Name = "Chams",
+    Default = getgenv().Visibility,
+    Callback = function(Value)
+        if getgenv().esp_loaded == false and Value == true then
+            getgenv().esp_loaded = true
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/skatbr/Roblox-Releases/main/A_simple_esp.lua", true))()
+        end
+        getgenv().cham = Value
+    end   
+})
+
+
+Tab3:AddToggle({
+        Name = "Use Team-Color",
+        Default = false,
+        Callback = function(Value)
+            getgenv().useTeamColor = Value
+        end
+})
+
+Tab3:AddButton({
+	Name = "Fates ESP & Aimbot(separate gui)",
+	Callback = function()
+      		loadstring(game:HttpGet('https://raw.githubusercontent.com/fatesc/fates-esp/main/main.lua'))()
+  	end    
+})
+
+
+
+
+local orionion = game:GetService("CoreGui"):FindFirstChild("Orion")
+
+local destroygui = Tab2:AddButton({
+    Name = "Destroy GUI",
+    Callback = function()
+        orionion:Destroy()
+        OrionLib:Destroy()
+       
+        wait(1)
+       
+        OrionLib:MakeNotification({
+            Name = "Removing GUI...",
+            Content = "GUI is removed!",
+            Time = 3
+        })
+    end   
+})
+
+
+
+
+
