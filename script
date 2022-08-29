@@ -86,6 +86,32 @@ Tab3:AddToggle({
     end   
 })
 
+Tab3:AddButton({
+	Name = "Item Esp",
+	Callback = function()
+      for __,v in pairs(game.workspace:GetDescendants()) do -- the path
+ if v.Name == "BlackKey" or v.Name == "BlueKey" or v.Name == "YellowKey" or v.Name == "OrangeKey" or v.Name == "RedKey" or v.Name == "GreenKey" or v.Name == "PurpleKey" or v.Name == "Hammer" or v.Name == "Wrench" or v.Name == "GreyKey" then -- the item
+   local a = Instance.new("BillboardGui",v) -- pretty much explains everything
+   a.Name = "ElectricPPPGUI"
+   a.Size = UDim2.new(0,50, 0,50)
+   a.AlwaysOnTop = true
+   local b = Instance.new("Frame",a)
+   b.Size = UDim2.new(1,0, 1,0)
+   b.BackgroundTransparency = 1
+   b.BorderSizePixel = 0
+   b.BackgroundColor3 = Color3.new(0, 255, 0)
+   local c = Instance.new('TextLabel',b)
+   c.Size = UDim2.new(1,0,2,1)
+   c.BorderSizePixel = 0
+   c.TextColor3 = Color3.new(125,234,103)
+   c.TextSize = 20
+   c.Text = v.Name
+   c.BackgroundTransparency = 1
+ end
+end
+  	end    
+})
+
 
 Tab3:AddToggle({
     Name = "Name",
